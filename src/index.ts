@@ -146,7 +146,7 @@ app.post("/add-message", async (req: Request, res: Response) => {
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: ["http://localhost:3000"]
+    origin: ["http://localhost:3000", "https://chatter-front-end.vercel.app"]
   }
 });
 
@@ -197,6 +197,6 @@ io.on("connection", (socket) => {
 
 
 
-httpServer.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+httpServer.listen(process.env.PORT || 5000, () => {
+  console.log('Server running on 5000');
 });
